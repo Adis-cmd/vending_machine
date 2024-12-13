@@ -80,7 +80,7 @@ public class AppRunner {
         while (true) {
             String input = fromConsole();
             if (input.equalsIgnoreCase("h")) {
-                break; // Выход из ввода денег
+                break;
             }
             try {
                 int money = Integer.parseInt(input);
