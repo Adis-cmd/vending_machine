@@ -3,9 +3,6 @@ package PayMethodd;
 public class PayCard implements PaymentMethod {
     private int amount;
 
-    public PayCard(int amount) {
-        this.amount = amount;
-    }
     @Override
     public void addMoney(int money) {
         this.amount += money;
