@@ -14,7 +14,6 @@ public class AppRunner {
     private final UniversalArray<Product> products = new UniversalArrayImpl<>();
     private PaymentMethod pay;
 
-    private final CoinAcceptor coinAcceptor;
 
     private static boolean isExit = false;
 
