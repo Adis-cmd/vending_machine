@@ -96,6 +96,21 @@ public class AppRunner {
         }
     }
 
+
+
+    private void payWithCard(int amountToPay) {
+        if (pay instanceof PayCard) {
+            boolean paymentSuccess = ((PayCard) pay).payWithCard(amountToPay);
+            if (paymentSuccess) {
+                print("Оплата прошла успешно с карты.");
+                pay.setAmount(pay.getAmount() - amountToPay);
+            } else {
+                print("Ошибка при оплате картой.");
+            }
+        }
+    }
+
+
     private UniversalArray<Product> getAllowedProducts() {
         UniversalArray<Product> allowProducts = new UniversalArrayImpl<>();
         for (int i = 0; i < products.size(); i++) {
