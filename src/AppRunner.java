@@ -45,6 +45,8 @@ public class AppRunner {
 
         UniversalArray<Product> allowProducts = new UniversalArrayImpl<>();
         allowProducts.addAll(getAllowedProducts().toArray());
+        choosePaymentAcceptor();
+        insertMoney();
         chooseAction(allowProducts);
 
     }
