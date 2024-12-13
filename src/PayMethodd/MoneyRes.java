@@ -1,4 +1,4 @@
 package PayMethodd;
 
-public class MoneyRes extends PaymentMethod {
+public class MoneyRes implements PaymentMethod {
 }

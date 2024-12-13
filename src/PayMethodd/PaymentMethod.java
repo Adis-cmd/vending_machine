@@ -1,22 +1,10 @@
 package PayMethodd;
 
-public class PaymentMethod {
-    private int amount;
+public interface PaymentMethod {
 
-    public  PaymentMethod() {
-        this.amount = 0;
-    }
+    void addMoney(int money);
 
-    public void addMoney(int money) {
-        if (money > 0) {
-            this.amount += money;
-        }
+    int getAmount();
 
-    }
-    public int getAmount() {
-        return this.amount;
-    }
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
+    void setAmount(int amount);
 }

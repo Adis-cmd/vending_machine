@@ -1,4 +1,4 @@
 package PayMethodd;
 
-public class CoinAcceptor extends PaymentMethod{
+public class CoinAcceptor implements PaymentMethod{
 }
