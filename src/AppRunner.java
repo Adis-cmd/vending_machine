@@ -127,12 +127,18 @@ public class AppRunner {
         try {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i).getActionLetter().equals(ActionLetter.valueOf(action.toUpperCase()))) {
-                    pay.setAmount(pay.getAmount() - products.get(i).getPrice());
-                    print("Вы купили " + products.get(i).getName());
-                    print("Оставшийся баланс: " + pay.getAmount() + " рублей");
-                    break;
-                } else if ("h".equalsIgnoreCase(action)) {
-                    isExit = true;
+                    Product selectedProduct = products.get(i);
+                    int productPrice = selectedProduct.getPrice();
+
+                    if (pay.getAmount() >= productPrice) {
+                        pay.setAmount(pay.getAmount() - productPrice);
+                        print("Вы купили " + selectedProduct.getName());
+                        print("Оставшийся баланс: " + pay.getAmount());
+                    } else if (pay instanceof PayCard) {
+                        payWithCard(productPrice);  // Пытаемся оплатить картой
+                    } else {
+                        print("Недостаточно средств для покупки " + selectedProduct.getName());
+                    }
                     break;
                 }
             }
