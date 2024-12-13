@@ -58,19 +58,21 @@ public class AppRunner {
         print("2 - Денежный приемник");
         print("3 - Оплата картой");
         String choice = sc.nextLine().trim();
-        switch (choice) {
-            case "1":
-            pay = new CoinAcceptor(0);
-            break;
-            case "2":
-            pay = new MoneyRes();
-                break;
-            case "3":
-            pay = new PayCard();
-                break;
-            default:
-                System.out.println("Введите правильно значение от 1 до 3 и не строку");
-                choosePaymentAcceptor();
+        while (true) {
+            switch (choice) {
+                case "1":
+                    pay = new CoinAcceptor(0);
+                    return;
+                case "2":
+                    pay = new MoneyRes();
+                    return;
+                case "3":
+                    pay = new PayCard();
+                    return;
+                default:
+                    System.out.println("Введите правильно значение от 1 до 3 и не строку");
+                    choice = sc.nextLine().trim();
+            }
         }
     }
 
