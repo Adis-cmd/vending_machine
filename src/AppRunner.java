@@ -155,8 +155,6 @@ public class AppRunner {
     }
 
 
-    }
-
     private void showActions(UniversalArray<Product> products) {
         for (int i = 0; i < products.size(); i++) {
             print(String.format(" %s - %s", products.get(i).getActionLetter().getValue(), products.get(i).getName()));
