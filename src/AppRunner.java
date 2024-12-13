@@ -134,28 +134,25 @@ public class AppRunner {
         showActions(products);
         print(" h - Выйти");
         String action = fromConsole().substring(0, 1);
-        try {
-            for (int i = 0; i < products.size(); i++) {
-                if (products.get(i).getActionLetter().equals(ActionLetter.valueOf(action.toUpperCase()))) {
-                    Product selectedProduct = products.get(i);
-                    int productPrice = selectedProduct.getPrice();
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getActionLetter().equals(ActionLetter.valueOf(action.toUpperCase()))) {
+                Product selectedProduct = products.get(i);
+                int productPrice = selectedProduct.getPrice();
 
-                    if (pay.getAmount() >= productPrice) {
-                        pay.setAmount(pay.getAmount() - productPrice);
-                        print("Вы купили " + selectedProduct.getName());
-                        print("Оставшийся баланс: " + pay.getAmount());
-                    } else if (pay instanceof PayCard) {
-                        payWithCard(productPrice);  // Пытаемся оплатить картой
-                    } else {
-                        print("Недостаточно средств для покупки " + selectedProduct.getName());
-                    }
-                    break;
+                if (pay.getAmount() >= productPrice) {
+                    pay.setAmount(pay.getAmount() - productPrice);
+                    print("Вы купили " + selectedProduct.getName());
+                    print("Оставшийся баланс: " + pay.getAmount());
+                } else if (pay instanceof PayCard) {
+                    payWithCard(productPrice);
+                } else {
+                    print("Недостаточно средств для покупки " + selectedProduct.getName());
                 }
+                return;
             }
-        } catch (IllegalArgumentException e) {
-            print("Недопустимая буква. Попрбуйте еще раз.");
-            chooseAction(products);
         }
+        print("Недопустимая буква. Попробуйте снова.");
+    }
 
 
     }
