@@ -44,6 +44,51 @@ public class AppRunner {
 
     }
 
+
+    private void choosePaymentAcceptor() {
+        Scanner sc = new Scanner(System.in);
+        print("Выберите тип приемника: ");
+        print("1 - Монетоприемник");
+        print("2 - Денежный приемник");
+        print("3 - Оплата картой");
+        String choice = sc.nextLine().trim();
+        switch (choice) {
+            case "1":
+            pay = new CoinAcceptor(0);
+            break;
+            case "2":
+            pay = new MoneyRes();
+                break;
+            case "3":
+            pay = new PayCard();
+                break;
+            default:
+                System.out.println("Введите правильно значение от 1 до 3 и не строку");
+                choosePaymentAcceptor();
+        }
+    }
+
+    private void insertMoney() {
+        print("Пожалуйста, вставьте деньги (введите сумму).Введите h чтобы переместиться к покупке");
+        while (true) {
+            String input = fromConsole();
+            if (input.equalsIgnoreCase("h")) {
+                break; // Выход из ввода денег
+            }
+            try {
+                int money = Integer.parseInt(input);
+                if (money > 0) {
+                    moneyRes.addMoney(money);
+                    print("Вы вставили " + money + " рублей. Текущий баланс: " + moneyRes.getAmount() + " рублей");
+                } else {
+                    print("Введите положительное число денег.");
+                }
+            } catch (NumberFormatException e) {
+                print("Недопустимый ввод. Пожалуйста, введите число или 'h' для завершения.");
+            }
+        }
+    }
+
     private UniversalArray<Product> getAllowedProducts() {
         UniversalArray<Product> allowProducts = new UniversalArrayImpl<>();
         for (int i = 0; i < products.size(); i++) {
