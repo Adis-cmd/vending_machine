@@ -27,7 +27,7 @@ public class AppRunner {
                 new Mars(ActionLetter.F, 80),
                 new Pistachios(ActionLetter.G, 130)
         });
-        coinAcceptor = new CoinAcceptor(100);
+        this.pay = new CoinAcceptor(100);
     }
 
     public static void run() {
