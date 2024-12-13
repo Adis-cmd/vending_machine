@@ -1,3 +1,7 @@
+import PayMethodd.CoinAcceptor;
+import PayMethodd.MoneyRes;
+import PayMethodd.PayCard;
+import PayMethodd.PaymentMethod;
 import enums.ActionLetter;
 import model.*;
 import util.UniversalArray;
@@ -8,6 +12,7 @@ import java.util.Scanner;
 public class AppRunner {
 
     private final UniversalArray<Product> products = new UniversalArrayImpl<>();
+    private PaymentMethod pay;
 
     private final CoinAcceptor coinAcceptor;
 
