@@ -41,7 +41,7 @@ public class AppRunner {
         print("В автомате доступны:");
         showProducts(products);
 
-        print("Монет на сумму: " + coinAcceptor.getAmount());
+        print("Баланс " +  pay.getAmount());
 
         UniversalArray<Product> allowProducts = new UniversalArrayImpl<>();
         allowProducts.addAll(getAllowedProducts().toArray());
@@ -85,8 +85,8 @@ public class AppRunner {
             try {
                 int money = Integer.parseInt(input);
                 if (money > 0) {
-                    moneyRes.addMoney(money);
-                    print("Вы вставили " + money + " рублей. Текущий баланс: " + moneyRes.getAmount() + " рублей");
+                   pay.addMoney(money);
+                    print("Вы вставили " + money + " рублей. Текущий баланс: " + pay.getAmount() + " рублей");
                 } else {
                     print("Введите положительное число денег.");
                 }
@@ -113,8 +113,9 @@ public class AppRunner {
         try {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i).getActionLetter().equals(ActionLetter.valueOf(action.toUpperCase()))) {
-                    coinAcceptor.setAmount(coinAcceptor.getAmount() - products.get(i).getPrice());
+                    pay.setAmount(pay.getAmount() - products.get(i).getPrice());
                     print("Вы купили " + products.get(i).getName());
+                    print("Оставшийся баланс: " + pay.getAmount() + " рублей");
                     break;
                 } else if ("h".equalsIgnoreCase(action)) {
                     isExit = true;
