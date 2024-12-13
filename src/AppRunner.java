@@ -84,8 +84,12 @@ public class AppRunner {
             try {
                 int money = Integer.parseInt(input);
                 if (money > 0) {
-                   pay.addMoney(money);
-                    print("Вы вставили " + money + " рублей. Текущий баланс: " + pay.getAmount() + " рублей");
+                    if (pay.getAmount() + money >= 0) {
+                        pay.addMoney(money);
+                        print("Вы вставили " + money + " рублей. Текущий баланс: " + pay.getAmount() + " чтобы выйти введи h");
+                    } else {
+                        print("Невозможно выполнить операцию: недостаточно средств.");
+                    }
                 } else {
                     print("Введите положительное число денег.");
                 }
